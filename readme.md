@@ -11,10 +11,14 @@ This project implements a simple data pipeline that pulls Apple stock data from 
 <b>Deployment:</b> `Docker` - Free to download and use. 
 
 
-The project follows the below structure 
-<b>1. Data Ingestion</b>: The project pulls Apple stock data from the `yfinance` API. The `fetch_data()` function requests historical stock data for a specified date range (April 2026 in this case.)
-<b>2. Database Storage</b>: The pulled data is stored in a SQLite database using a defined schema that captures key stock attributes such as date, open, close, high, low, and volume. Most columns are stored as floats, with date being stored at text. This is something I would change later and reasons for this are detailed in the below section. `database.py` handles both table creation and data insertion. 
-<b>3. Display Layer / Frontend</b>: A lightweight frontend is implemented using `Flask`. The webpage is customised using basic HTML and CSS. Some JS functions are used to display the live datetime for aesthetic purposes and better user experience. 
+The project follows the below structure <br>
+
+<b>1. Data Ingestion</b>: The project pulls Apple stock data from the `yfinance` API. The `fetch_data()` function requests historical stock data for a specified date range (April 2026 in this case.)<br>
+
+<b>2. Database Storage</b>: The pulled data is stored in a SQLite database using a defined schema that captures key stock attributes such as date, open, close, high, low, and volume. Most columns are stored as floats, with date being stored at text. This is something I would change later and reasons for this are detailed in the below section. `database.py` handles both table creation and data insertion. <br>
+
+<b>3. Display Layer / Frontend</b>: A lightweight frontend is implemented using `Flask`. The webpage is customised using basic HTML and CSS. Some JS functions are used to display the live datetime for aesthetic purposes and better user experience. <br>
+
 <b> 4. Deployment</b>: The project is containerised using `Docker` to ensure it can be run in a consistent and repeatable way. A Dockerfile defines the environment, installs dependencies, and executes both the data ingestion script and the `Flask` application. This allows a new user to run the entire pipeline with a single command, without needing to install Python or any dependencies locally.
 
 ---
