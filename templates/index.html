@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apple Stock Data - April 2026</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f5;
+            margin: 2;
+            padding: 2;
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 50px auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .datetime {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .filter {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: #F52A3B;
+            color: white;
+            border: #000000;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c90616;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #F52A3B;
+            color: white;
+        }
+        /*alternate colours in table*/
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>{{ title }}</h1>
+
+        <!--Display current date and time-->
+        <div class="datetime" id="datetime"></div>
+
+        <a href="/download">Download CSV</a>
+        
+        <!--filter button to select data based on a date - NEEDS WORK! -->
+        <div class="filter">
+            <input type="text" name="date" placeholder="Enter date (YYYY-MM-DD)">
+            <button>Filter Data</button>
+        </div>
+
+        {{ tables | safe }}
+
+    </div>
+    <!--JS func retrieves current time using the browser’s Date object and updates every second-->
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById("datetime").innerText =
+                now.toLocaleString();
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+</html>
