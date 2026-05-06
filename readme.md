@@ -65,11 +65,11 @@ index.html (frontend display)
 
 ## Limitations and Future Improvements
 
-1. The `Date` column is stored as text and includes a timestamp. For this project, the time part is unnecessary and could be removed. Storing this as a correct date type would improve clarity and compatibility with BI/vis tools.
+1. The `Date` column is stored as text and includes a timestamp. The reason for storing as text is that in SQLite, there is no true dedicated Date storage type and so best to store as text for now. For this project, the time part is unnecessary and could be removed. Storing this as a correct date type would improve clarity and compatibility with BI/vis tools and this can be done using pandas after the insert_data() step. 
 
-2. Although I added an auto-incrementing `id` column in the DB schema, it is not retained on final output. This is due to using `to_sql(..., if_exists="replace")`, which overwrites the table. A better approach would be to append data while preserving the schema.
+2. Mixing pandas indexing with database indexing: Although I added an auto-incrementing `id` column in the DB schema, it is not retained on final output. This is due to using `to_sql(..., if_exists="replace")`, which overwrites the table. A better approach would be to append data while preserving the schema.
 
-3. The stock ticker and date range dates are hardcoded for Apr-26. These should be made dynamic (using environment variables or a config file)
+3. The stock ticker and date range dates are hardcoded. These should be made dynamic (using environment variables or a config file)
 
 4. There is no error handling for API failures. This could be improved with exception handling.
 
